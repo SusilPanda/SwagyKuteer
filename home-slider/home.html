@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" />
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.1/angular.js"></script>
+    <script src="http://code.angularjs.org/1.2.1/angular-animate.js"></script>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="changethewords" class="animate-enter">
+    I love
+    <span data-id="1">JavaScript</span>
+    <span data-id="2">HTML5</span>
+    <span data-id="3">CSS3</span>
+    <span data-id="4">ReactJS</span>
+    <span data-id="5">AngularJS</span>
+    <span data-id="6">jQuery</span>
+</div>
+
+
+
+<div class="span9">
+    <div class="btn-group" style="display: block; text-align: center; margin-bottom: 10px">
+        <button ng-click="article = '1';" class="btn btn-primary">Pitch</button>
+        <button ng-click="article = '2';" class="btn btn-primary">Why</button>
+        <button ng-click="article = '3';" class="btn btn-primary">MVVM</button>
+        <button ng-click="article = '4';" class="btn btn-primary">Ebook</button>
+    </div>
+
+<div class="well" style="height: 170px;">
+    <form style="display: none" ng-show="ready" style="text-align: center;">
+        <div class="switch" style="width: 1000px; height: 170px;" ng-switch on="article" ng-animate="'animate'">
+            <div ng-switch-when="1">
+                <table style="height: 170px;">
+                    <tr><td style="width: 170px;">
+                        <img src="#" alt="AngularJS Logo" style="width: 150px; height: 150px;" />
+                    </td>
+                        <td style="width: 470px;">
+                            <h2>The AngularJS Elevator Pitch</h2>
+                            <blockquote>
+                                <p style="font-size: 13px">"AngularJS is a new, powerful, client-side technology that provides a way of
+                                    accomplishing really powerful things in a way that embraces and extends HTML,
+                                    CSS and JavaScript, while shoring up some of its glaring deficiencies. It is
+                                    what HTML would have been, had it been built for dynamic content."</p>
+                                <small><cite title="Net Tuts+"><a href="http://net.tutsplus.com/tutorials/javascript-ajax/5-awesome-angularjs-features/">Net Tuts+</a></cite></small>
+                            </blockquote>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-switch-when="2">
+                <table style="height: 170px;">
+                    <tr><td style="width: 170px;">
+                        <img src="#" alt="AngularJS Coffe" style="width: 150px; height: 150px;" />
+                    </td>
+                        <td style="width: 470px;">
+                            <h2>Why AngularJS?</h2>
+                            <blockquote>
+                                <p style="font-size: 13px">"HTML is great for declaring static documents, but
+                                    it falters when we try to use it for declaring dynamic views in web-applications.
+                                    AngularJS lets you extend HTML vocabulary for your application.
+                                    The resulting environment is extraordinarily expressive, readable, and quick to develop."</p>
+                                <small><cite title="AngularJS"><a href="http://angularjs.org/">AngularJS</a></cite></small>
+                            </blockquote>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-switch-when="3">
+                <table style="height: 170px;">
+                    <tr><td style="width: 170px;">
+                        <img src="#" alt="AngularJS Pitfalls" style="width: 150px; height: 150px;" />
+                    </td>
+                        <td style="width: 470px;">
+                            <h2>Model View ViewModel</h2>
+                            <blockquote>
+                                <p style="font-size: 13px">
+                                    AngularJS incorporates the basic principles behind the original MVC software
+                                    design pattern into how it builds client-side web applications. AngularJS
+                                    does not implement MVC in the traditional sense, but rather something closer
+                                    to MVVM (Model-View-ViewModel).</p>
+                                <small><cite title="AngularJS"><a href="http://zachariahmoreno.com/portfolio/Angular-Slides/#/step-10">
+                                    Zach Moreno</a></cite></small>
+                            </blockquote>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-switch-when="4">
+                <table style="height: 170px;">
+                    <tr><td style="width: 170px;">
+                        <img src="#" alt="AngularJS Pitfalls" style="width: 150px; height: 150px;" />
+                    </td>
+                        <td style="width: 470px;">
+                            <h2>AngularJS Ebook</h2>
+                            <blockquote>
+                                <p style="font-size: 13px">"Develop smaller, lighter web apps that are simple to create and easy to
+                                    test, extend, and maintain as they grow. This hands-on guide introduces you to AngularJS,
+                                    the open source JavaScript framework that uses MVC architecture,
+                                    data binding, client-side templates, and dependency injection ..."</p>
+                                <small><cite title="AngularJS"><a href="http://www.amazon.com/AngularJS-ebook/dp/B00C9MYA7G">
+                                    AngularJS Ebook</a></cite></small>
+                            </blockquote>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+
+</body>
+</html>

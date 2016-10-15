@@ -10,18 +10,18 @@
   <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/angular.min.js"></script>
-  <script type="text/javascript" src="controllers/profileController.js"></script>
+  <script type="text/javascript" src="controllers/mainController.js"></script>
   <script type="text/javascript" src="js/angular-animate.js"></script>
 </head>
 <body>
   <div class="jumbotron text-center">
-    <h1>Connection</h1>
+    <h1>Swagy Kuteer</h1>
     <p>
-      Connecting people..
+      For the people who believe in uniqueness..
     </p>
   </div>
   <div class="container">
-    <form class="form-signin" action="home.htm">
+    <form class="form-signin" action="home.html">
       <label for="inputEmail" class="sr-only">Email Address</label>
       <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
       <br>
@@ -52,25 +52,17 @@
         </div>
         <form class="form-register" action="index.htm">
           <div class="modal-body">
-            <input type="text" class="form-control" name="name" placeholder="Name"  ng-model="expert.name" required autofocus>
+            <input type="text" class="form-control" name="name" placeholder="Name"  ng-model="user.name" required autofocus>
             <br>
-            <input type="email" class="form-control" ng-model="expert.emailid" placeholder="Email Address" required>
+            <input type="email" class="form-control" ng-model="user.emailid" placeholder="Email Address" required>
             <br>
-            <input type="password" class="form-control" ng-model="expert.password" placeholder="Password" required>
+            <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
             <br>
-            <input type="password" class="form-control" ng-model="expert.mobilenumber" placeholder="Mobile Number" required>
+            <input type="password" class="form-control" ng-model="user.mobilenumber" placeholder="Mobile Number" required>
             <br>
-            <input type="text" class="form-control" ng-model="expert.experience" placeholder="Experience">
-            <br>
-            <input type="text" class="form-control" ng-model="expert.currentproject" placeholder="Current Project">
-            <br>
-            <input type="text" class="form-control" ng-model="expert.profile" placeholder="Profile">
-            <br>
-            <input type="text" class="form-control" ng-model="expert.role" placeholder="Role">
-
-          </div>
+           </div>
           <div class="modal-footer">
-            <button class="btn btn-default btn-primary" type="submit" ng-click="addProfile()">Submit</button>
+            <button class="btn btn-default btn-primary" type="submit" ng-click="addUser()">Submit</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </form>
