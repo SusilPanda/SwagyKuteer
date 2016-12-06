@@ -61,4 +61,14 @@ var data = [ {
 ];
 
 app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
+    $scope.init = function(value) {
+        if (value == 1) {
+            $http.get("http://localhost:3033/products").success(function (response) {
+                //$scope.message = response;
+                console.log("products retrieved");
+                $scope.products = response;
+                //getAllImage();
+            });
+        }
+    }
 });

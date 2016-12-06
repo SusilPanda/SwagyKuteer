@@ -1,74 +1,155 @@
 <!DOCTYPE html>
-<html ng-app="userApp">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Connection</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
-  <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="js/angular.min.js"></script>
-  <script type="text/javascript" src="controllers/mainController.js"></script>
-  <script type="text/javascript" src="js/angular-animate.js"></script>
+    <title>Swaggy Kuteer</title>
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="controllers/mainController.js"></script>
+    <script type="text/javascript" src="js/angular-animate.js"></script>
+    <style>
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        /*.jumbotron {
+            background-image: url("images/swaggyKuteerBanner.PNG");
+            margin-bottom: 0;
+        }*/
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+        #banner {
+            height: 60px;
+            background-image:url("images/swaggyKuteerBanner.PNG");
+            margin-top: 0px;
+            margin-bottom: 0px;
+            width: 996px;
+            padding: 0px;
+        }
+    </style>
 </head>
-<body>
-  <div class="jumbotron text-center">
-    <h1>Swagy Kuteer</h1>
-    <p>
-      For the people who believe in uniqueness..
-    </p>
-  </div>
-  <div class="container">
-    <form class="form-signin" action="home.html">
-      <label for="inputEmail" class="sr-only">Email Address</label>
-      <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required autofocus>
-      <br>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember Me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <br>
-      <div class="text-center">
-        <a href="#" data-toggle="modal" data-target="#myModal">Register</a>
-      </div>
-    </form>
-  </div>
-
-  <!-- Register Model -->
-  <div id="myModal" class="modal fade" role="dialog" ng-controller="userCtrl">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Register</h4>
-        </div>
-        <form class="form-register" action="index.htm">
-          <div class="modal-body">
-            <input type="text" class="form-control" name="name" placeholder="Name"  ng-model="user.name" required autofocus>
-            <br>
-            <input type="email" class="form-control" ng-model="user.emailid" placeholder="Email Address" required>
-            <br>
-            <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
-            <br>
-            <input type="password" class="form-control" ng-model="user.mobilenumber" placeholder="Mobile Number" required>
-            <br>
-           </div>
-          <div class="modal-footer">
-            <button class="btn btn-default btn-primary" type="submit" ng-click="addUser()">Submit</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </form>
-      </div>
+<body ng-app="userApp" ng-controller="userCtrl" data-ng-init="init(1)">
+<div class="jumbotron" >
+    <div class="container text-primary glyphicon-bold">
+        <h2>Swaggy Kuteer</h2>
+        <p>Swag up your Kuteer our way!</p>
     </div>
-  </div>
-  <!-- End Modal -->
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">FEATURED COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img5.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Wonderchef Royal Velvet blue set of 4 pcs</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">FEATURED COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img6.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">FEATURED COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img7.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+    </div>
+</div><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img8.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img9.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img10.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+    </div>
+</div><br><br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary" ng-repeat="product in products">
+                <div class="panel-heading">COLLECTION</div>
+                <div class="panel-body"><img src="slider-images/img8.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                <div class="panel-footer">{{ product.shortDescription}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+    <p>Swaggy Kuteer Copyright</p>
+    <form class="form-inline">Get deals:
+        <input type="email" class="form-control" size="50" placeholder="Email Address">
+        <button type="button" class="btn btn-danger">Sign Up</button>
+    </form>
+</footer>
+
 </body>
 </html>

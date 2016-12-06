@@ -189,3 +189,12 @@ th {
     padding: 5px;
     text-align:left;
 }*/
+
+#banner {
+    height: 60px;
+    background-image:url("swaggyKuteerBanner.PNG");
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 996px;
+    padding: 0px;
+}
