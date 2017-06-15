@@ -73,7 +73,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+
             </ul>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" ng-click=""><strong>Edit Profile</strong></button>
         </div>
     </div>
 </nav>
@@ -88,10 +90,10 @@
             </div>
         </div>
         <div class="col-sm-4">
-            <div class="panel panel-danger">
+            <div class="panel panel-danger" ng-repeat="product in products">
                 <div class="panel-heading">FEATURED COLLECTION</div>
                 <div class="panel-body"><img src="slider-images/img6.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+                <div class="panel-footer">{{ product.shortDescription}}</div>
             </div>
         </div>
         <div class="col-sm-4">

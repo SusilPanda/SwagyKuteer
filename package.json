@@ -2,7 +2,7 @@
   "name": "swagykuteer",
   "version": "1.0.0",
   "description": "e-commerce app",
-  "main": "server.js",
+  "main": "index.html",
   "dependencies": {
     "argparse": "^1.0.9",
     "body-parser": "^1.15.2",
