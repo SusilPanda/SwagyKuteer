@@ -1,0 +1,37 @@
+{
+  "name": "swagykuteer",
+  "version": "1.0.0",
+  "description": "e-commerce app",
+  "main": "server.js",
+  "dependencies": {
+    "argparse": "^1.0.9",
+    "body-parser": "^1.15.2",
+    "connect-busboy": "^0.0.2",
+    "express": "^4.14.0",
+    "express-fileupload": "^0.0.5",
+    "excel-parser": "^0.2.2",
+    "fs": "^0.0.2",
+    "mongodb": "^2.1.18",
+    "mongodb-core": "^1.3.21",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.5.1",
+    "nodemailer": "^2.5.0",
+    "resolve-from": "^2.0.0",
+    "xlsx": "^0.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SusilPanda/SwagyKuteer.git"
+  },
+  "author": "susilpanda",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/SusilPanda/SwagyKuteer/issues"
+  },
+  "homepage": "https://github.com/SusilPanda/SwagyKuteer#readme"
+}

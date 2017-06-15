@@ -9,6 +9,9 @@ var db = mongojs('swaggykuteer', [ 'swaggykuteer']);
 var bodyParser = require('body-parser');
 
 var nodemailer = require('nodemailer');
+//var excelParser = require('excel-parser');
+
+
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -128,5 +131,54 @@ function handleEmailSend(req, res) {
     });
 }
 
+function convertToJSON(array) {
+    var first = array[0].join()
+    var headers = first.split(',');
+
+    var jsonData = [];
+    for ( var i = 1, length = array.length; i < length; i++ )
+    {
+
+        var myRow = array[i].join();
+        var row = myRow.split(',');
+
+        var data = {};
+        for ( var x = 0; x < row.length; x++ )
+        {
+            data[headers[x]] = row[x];
+        }
+        jsonData.push(data);
+
+    }
+    return jsonData;
+};
+
+app.post('/uploadData',  parseAndSaveInDB);
+
+  function  parseAndSaveInDB(req, res) {
+      console.log("Inside uploadData");
+      /*excelParser.worksheets({
+          inFile: 'data/productData.xlsx'
+      }, function (err, worksheets) {
+          if (err) console.error(err);
+          console.log(worksheets);
+      });*/
+
+      excelParser.parse({
+       inFile: 'data/productData.xlsx',
+       worksheet: 1,
+       skipEmpty: true,
+       searchFor: {
+       term: ['my search term'],
+       type: 'loose'
+       }
+       },function(err, records){
+       if(err) console.error(err);
+       console.log(records);
+       });
+      //console.log(jsonDataArray(data));
+      //console.log(JSON.stringify(convertToJSON(data)));
+      console.log("End of Parsing");
+  }
 
 app.listen(3033);
