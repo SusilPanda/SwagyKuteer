@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<title>Swaggy Kuteer</title>
+<link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+<script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="controllers/mainController.js"></script>
+<script type="text/javascript" src="js/angular-animate.js"></script>
+<style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+        margin-bottom: 50px;
+        border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+    /*.jumbotron {
+        background-image: url("images/swaggyKuteerBanner.PNG");
+        margin-bottom: 0;
+    }*/
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+    }
+    #banner {
+        height: 60px;
+        background-image:url("images/swaggyKuteerBanner.PNG");
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 996px;
+        padding: 0px;
+    }
+</style>
+</head>
+<body ng-app="userApp" ng-controller="userCtrl" data-ng-init="init(1)">
+<div class="jumbotron" >
+    <div class="container text-primary glyphicon-bold">
+        <h2>Swaggy Kuteer</h2>
+        <p>Swag up your Kuteer our way!</p>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>`
+    </div>
+    <div>
+        <button type="button" class="btn btn-default btn-primary" data-toggle="modal"  data-backdrop="static" data-target="#uploadModal">
+            <span class="glyphicon glyphicon-upload"></span>
+        </button>
+        <button class="btn btn-warning" data-toggle="modal" data-target="#myModal"  ng-click="upload()"><strong>Upload Excel</strong></button>
+    </div>
+</nav>
+Hello Admin !!!
+
+<!-- upload Excel Sheet Model -->
+<div id="uploadModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upload Profile Picture</h4>
+            </div>
+            <form ref='uploadForm'
+                  id='uploadForm'
+                  action='http://localhost:3222/upload'
+                  method='post'
+                  encType="multipart/form-data" >
+                <div class="modal-body">
+                    <input type="hidden" name="pid" value="{{expert._id}}" />
+                    <label class="btn btn-default btn-file">
+                        Browse Profile Picture<input type="file" name="sampleFile" style="display: none;"/>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-primary" type="submit">Upload</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html ng-app="userApp">
+<head>
+<title>Swaggy Kuteer</title>
+<link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="css/bootstrap.min.css"  media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="css/style.css" media="screen" title="no title" charset="utf-8">
+<script type="text/javascript" src="js/jquery-2.2.2.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="controllers/mainController.js"></script>
+<script type="text/javascript" src="js/angular-animate.js"></script>
+<style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+        margin-bottom: 50px;
+        border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+    /*.jumbotron {
+        background-image: url("images/swaggyKuteerBanner.PNG");
+        margin-bottom: 0;
+    }*/
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+        background-color: #f2f2f2;
+        padding: 25px;
+    }
+    #banner {
+        height: 60px;
+        background-image:url("images/swaggyKuteerBanner.PNG");
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 996px;
+        padding: 0px;
+    }
+</style>
+</head>
+<body ng-app="userApp" ng-controller="userCtrl" data-ng-init="init(1)">
+<div class="jumbotron" >
+    <div class="container text-primary glyphicon-bold">
+        <h2>Swaggy Kuteer</h2>
+        <p>Swag up your Kuteer our way!</p>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>`
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="admin.html" >Admin</a></li>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Deals</a></li>
+                <li><a href="#">Stores</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container text-center">
+    <div class="row">
+        <!-- Lef side Area -->
+        <div class="col-sm-3 well slideanim slide">
+            <div class="well">
+                <h2>{{product.name}}</h2>
+                <img src="data:image/jpg;base64,{{ imgsource }}" class="img-circle" height="220" width="220" alt="Avatar" />
+                <br><br>
+                <div>
+                    <button type="button" class="btn btn-default btn-primary" data-toggle="modal" data-backdrop="static" data-target="#uploadModal">
+                        <span class="glyphicon glyphicon-camera"></span>
+                    </button>
+                    <button class="btn btn-warning" data-toggle="modal" data-target="#myModal" ng-click="edit(expert._id)"><strong>Edit Profile</strong></button>
+                </div>
+            </div>
+            <br>
+            <div class="well">
+                <p><a href="#">Skills</a></p>
+                <p>
+                    <span class="label label-success">Java</span>
+                    <span class="label label-primary">C++</span>
+                    <span class="label label-default">Eclipse</span>
+                    <span class="label label-info">Linux</span>
+                    <span class="label label-warning">Python</span>
+                    <span class="label label-primary">AngularJs</span>
+                    <span class="label label-danger">NodeJs</span>
+                </p>
+                <br>
+                <p>
+                    <button class="btn btn-info" data-toggle="modal" data-target="#SkillModal" ng-click="edit(expert._id)"><strong>Edit Skills Rating</strong></button>
+                </p>
+            </div>
+            <div class="well">
+                <p><strong>EMAIL ID</strong></p>
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                </button>
+                <div>
+                    <span><strong>{{expert.emailid}}</strong></span>
+                </div>
+                <br>
+                <p><strong>MOBILE NUMBER</strong></p>
+                <button type="button" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-phone"></span>
+                </button>
+                <div>
+                    <span><strong>{{expert.mobilenumber}}</strong></span>
+                </div>
+            </div>
+        </div>
+        <!-- Center Area -->
+        <div class="col-sm-7">
+            <div class="row">
+                <div class="col-sm-3 slideanim slide">
+                    <div style="background:#fff; padding-top:2px">
+                        <h4>DESCRIPTION</h4>
+                        <table class="table">
+                            <tr>
+                                <button type="button" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-briefcase"></span>
+                                </button>
+                            </tr>
+                            <tr>
+                                <h4>{{expert.currentproject}}</h4>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-3 slideanim slide">
+                    <div style="background:#fff; padding-top:2px">
+                        <h4>RATING</h4>
+                        <table class="table">
+                            <tr>
+                                <button type="button" class="btn btn-warning">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </button>
+                            </tr>
+                            <tr>
+                                <h4>{{expert.experience}}</h4>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-3 slideanim slide">
+                    <div style="background:#fff; padding-top:2px">
+                        <h4>PROFILE</h4>
+                        <table class="table">
+                            <tr>
+                                <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-blackboard"></span>
+                                </button>
+                            </tr>
+                            <tr>
+                                <h4>{{expert.profile}}</h4>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-sm-3 slideanim slide">
+                    <div style="background:#fff; padding-top:2px">
+                        <h4>AWARDS</h4>
+                        <table class="table">
+                            <tr>
+                                <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-gift"></span>
+                                </button>
+                            </tr>
+                            <tr>
+                                <h4>{{expert.awards}}</h4>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Start of User Skills Progress Bar-->
+            <div class="well slideanim slide">
+                <p><a href="#"><strong>Product Review</strong></a></p>
+                <p>
+                    <span class="label label-success">Java</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.java*10 + '%'}">
+                        {{ expert.skills.java*10 + "%"}}
+                    </div>
+                </div>
+                <p><span class="label label-primary">C++</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.cpp*10 + '%'}">
+                        {{expert.skills.cpp*10 + '%'}}
+                    </div>
+                </div>
+                <p><span class="label label-default">Eclipse</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.eclipse*10 + '%'}">
+                        {{expert.skills.eclipse*10 + '%'}}
+                    </div>
+                </div>
+                <p><span class="label label-info">Linux/Shell</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.linux*10 + '%'}">
+                        {{expert.skills.linux*10 + '%'}}
+                    </div>
+                </div>
+                <p><span class="label label-warning">Python</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.python*10 + '%'}">
+                        {{expert.skills.python*10 + '%'}}
+                    </div>
+                </div>
+                <p> <span class="label label-primary">AngularJs</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.angularjs*10 + '%'}">
+                        {{expert.skills.angularjs*10 + '%'}}
+                    </div>
+                </div>
+                <p><span class="label label-danger">NodeJs</span></p>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" ng-style="{'width': expert.skills.nodejs*10 + '%'}">
+                        {{expert.skills.nodejs*10 + '%'}}
+                    </div>
+                </div>
+                </p>
+            </div>
+            <!-- End of User Skills Progress Bar-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="well slideanim slide">
+                        <form>
+                            <textarea name="emailBody" ng-model="text" rows="3" cols="80"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-success" ng-click="sendEmail()">
+                                <strong>Send Email</strong>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="well slideanim slide">
+                        <table>
+                            <tr>
+                                <td>
+                                    Your Last Sent Message :
+                                </td>
+                                <td>
+                                    {{ message}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-sm-2 well slideanim slide">
+            <div class="thumbnail">
+                <p><strong>ROLE</strong></p>
+                <button type="button" class="btn btn-info">
+                    <span class="glyphicon glyphicon-barcode"></span>
+                </button>
+                <div>
+                    <span><strong>{{expert.role}}</strong></span>
+                </div>
+                <!--
+                      <p>
+                          <button class="btn btn-warning" data-toggle="modal" data-target="#CertificateModal" ng-click="edit(expert._id)">Edit Certification</button>
+                      </p>
+                -->
+            </div>
+            <div class="thumbnail">
+                <p><strong>CERTIFICATION</strong></p>
+                <button type="button" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-education"></span>
+                </button>
+                <div>
+                    <span><strong>{{expert.certification}}</strong></span>
+                </div>
+                <!--
+                      <p>
+                          <button class="btn btn-warning" data-toggle="modal" data-target="#CertificateModal" ng-click="edit(expert._id)">Edit Certification</button>
+                      </p>
+                -->
+            </div>
+            <div class="well">
+                <p><strong>TEST FRAMEWORK</strong></p>
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-ok-sign"></span>
+                </button>
+                <div>
+                    <span><strong>{{expert.testframework}}</strong></span>
+                </div>
+            </div>
+            <div class="well">
+                <p><a href="#">Know about me</a></p>
+                <span>Design and Developments</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                         aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                        40%
+                    </div>
+                </div>
+
+                <span>Communication</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+                         aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                        50%
+                    </div>
+                </div>
+
+                <span>Problem Solving and Decision Making</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                         aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                        60%
+                    </div>
+                </div>
+
+                <span>Loyal and Dedication</span>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                         aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                        70%
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Update Model -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Profile</h4>
+            </div>
+            <form class="form-update">
+                <div class="modal-body">
+                    <label>Full Name :</label>
+                    <input type="text" class="form-control" name="name" ng-model="expert.name"  required autofocus> <!-- ng-readonly="true"-->
+                    <!-- <label>Skills :</label>
+                     <input type="text" class="form-control" ng-model="expert.skills">-->
+                    <label>Experience :</label>
+                    <input type="text" class="form-control" ng-model="expert.experience">
+                    <label>Email ID :</label>
+                    <input type="text" class="form-control" ng-model="expert.emailid">
+                    <label>Mobile Number :</label>
+                    <input type="text" class="form-control" ng-model="expert.mobilenumber">
+                    <label>Current Project :</label>
+                    <input type="text" class="form-control" ng-model="expert.currentproject">
+                    <label>Profile :</label>
+                    <input type="text" class="form-control" ng-model="expert.profile">
+                    <label>Role :</label>
+                    <input type="text" class="form-control" ng-model="expert.role">
+                    <label>Awards :</label>
+                    <input type="text" class="form-control" ng-model="expert.awards">
+                    <label>Certificates :</label>
+                    <input type="text" class="form-control" ng-model="expert.certification">
+                    <label>Test Framework :</label>
+                    <input type="text" class="form-control" ng-model="expert.testframework">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-primary" type="submit" ng-click="updateProfile()" data-dismiss="modal">Submit </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- upload image Model -->
+<div id="uploadModal" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Upload Profile Picture</h4>
+            </div>
+            <form ref='uploadForm'
+                  id='uploadForm'
+                  action='http://localhost:3222/upload'
+                  method='post'
+                  encType="multipart/form-data" >
+                <div class="modal-body">
+                    <input type="hidden" name="pid" value="{{expert._id}}" />
+                    <label class="btn btn-default btn-file">
+                        Browse Profile Picture<input type="file" name="sampleFile" style="display: none;"/>
+                    </label>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-primary" type="submit">Upload</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End upload end modal -->
+
+<!-- Update Skill Chart-->
+<div id="SkillModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Skills : Rate YourSelf OutOff 10</h4>
+            </div>
+            <form class="form-update">
+                <div class="modal-body">
+                    <label>Java :</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.java" required autofocus>
+                    <label>C++ :</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.cpp">
+                    <label>Linux/Shell :</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.linux">
+                    <label>Python :</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.python">
+                    <label>Eclipse</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.eclipse">
+                    <label>Angular JS</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.angularjs">
+                    <label>Node JS</label>
+                    <input type="text" class="form-control" ng-model="expert.skills.nodejs">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-primary" type="submit" ng-click="updateSkill()" data-dismiss="modal">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal of Skill Chart-->
+<!-- Modal Edit Certification-->
+<div id="CertificateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Certification</h4>
+            </div>
+            <form class="form-update">
+                <div class="modal-body" ng-repeat="certificate in expert.certification">
+                    <label>Name :</label>
+                    <input type="text" class="form-control" name="name" ng-model="certificate.name"  required autofocus> <!-- ng-readonly="true"-->
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default btn-primary" type="submit" ng-click="updateCertificates()" data-dismiss="modal">Submit </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal Certification -->
+</body>
+</html>

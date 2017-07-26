@@ -9,7 +9,7 @@ var db = mongojs('swaggykuteer', [ 'swaggykuteer']);
 var bodyParser = require('body-parser');
 
 var nodemailer = require('nodemailer');
-//var excelParser = require('excel-parser');
+var excelParser = require('excel-parser');
 
 
 
@@ -62,74 +62,9 @@ app.put('/update/:id', function (req, res) {
     });
 });
 
-app.put('/updateSkill/:id', function (req, res) {
-    console.log("update skill request received");
-    var id = req.params.id;
-    console.log(req.body);
-    db.expertprofiles.findAndModify({
-        query:{_id: mongojs.ObjectId(id)},
-        update:{$set:{skills :{java:req.body.java, cpp:req.body.cpp, linux:req.body.linux, python:req.body.python, angularjs:req.body.angularjs,
-            nodejs:req.body.nodejs, eclipse:req.body.eclipse } }},new : true },function(response){
-        console.log("updated successfully");
-        console.log(response);
-        res.json(response);
-    });
-});
-app.put('/updateCertification/:id', function (req, res) {
-    console.log("update certification request received");
-    var id = req.params.id;
-    console.log(req.body);
-    db.expertprofiles.findAndModify({
-        query:{_id: mongojs.ObjectId(id)},
-        update:{$set:{certification :{name:req.body.name } }},new : true },function(response){
-        console.log("updated certification successfully");
-        console.log(response);
-        res.json(response);
-    });
-});
 
-app.get('/search/:id', function(req, res){
-    console.log("got a get Request");
-    var id = req.params.id;
-    console.log(id);
-    console.log(req.body);
-    // var query = {};
-    //query[experience] = "4.4";
-    db.expertprofiles.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
-        res.json(doc);
-        console.log(doc);
-        console.log(err);
-    });
-});
 
-app.post('/sendEmail/:id', handleEmailSend); // handle the route at yourdomain.com/sayHello
 
-function handleEmailSend(req, res) {
-    console.log("Email recieved to send : " + req.params.id);
-    console.log(req.body.message);
-    var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: 'expertprofile123@gmail.com', // admin email id
-            pass: 'Unity@123' // admin password
-        }
-    });
-    var mailOptions = {
-        from: 'expertprofile123@gmail.com', // sender address
-        to: req.params.id, // list of receivers
-        subject: 'Requirement..', // Subject line
-        text: req.body.message//, // plaintext body
-    };
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-            res.json({status: 'error'});
-        }else{
-            console.log('Message sent: ' + info.response);
-            res.json({status: info.response});
-        };
-    });
-}
 
 function convertToJSON(array) {
     var first = array[0].join()
@@ -153,32 +88,53 @@ function convertToJSON(array) {
     return jsonData;
 };
 
-app.post('/uploadData',  parseAndSaveInDB);
+app.post('/uploadData',  function (req, res) {
 
-  function  parseAndSaveInDB(req, res) {
-      console.log("Inside uploadData");
-      /*excelParser.worksheets({
-          inFile: 'data/productData.xlsx'
-      }, function (err, worksheets) {
-          if (err) console.error(err);
-          console.log(worksheets);
-      });*/
+    /*function  parseAndSaveInDB(req, res) {
+     console.log("Inside uploadData");
+     /!*excelParser.worksheets({
+     inFile: 'data/productData.xlsx'
+     }, function (err, worksheets) {
+     if (err) console.error(err);
+     console.log(worksheets);
+     });*!/
 
-      excelParser.parse({
-       inFile: 'data/productData.xlsx',
-       worksheet: 1,
-       skipEmpty: true,
-       searchFor: {
-       term: ['my search term'],
-       type: 'loose'
-       }
-       },function(err, records){
-       if(err) console.error(err);
-       console.log(records);
-       });
-      //console.log(jsonDataArray(data));
-      //console.log(JSON.stringify(convertToJSON(data)));
-      console.log("End of Parsing");
-  }
+     excelParser.parse({
+     inFile: 'data/master.xls',
+     worksheet: 1,
+     skipEmpty: true,
+     searchFor: {
+     term: ['my search term'],
+     type: 'loose'
+     }
+     },function(err, records){
+     if(err) console.error(err);
+     console.log(records);
+     });
+     //console.log(jsonDataArray(data));
+     //console.log(JSON.stringify(convertToJSON(data)));
+     console.log("End of Parsing");
+     };*/
 
+    var exceltojson = require("xlsx-to-json-lc");
+    exceltojson({
+        input: "data/productData.xlsx",
+        output: null, //"if you want output to be stored in a file",
+        // sheet: "sheetname",  // specific sheetname inside excel file (if you have multiple sheets)
+        lowerCaseHeaders: true //to convert all excel headers to lowr case in json
+    }, function (err, result) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log("Excel parsed");
+            //console.log(result);
+            //result will contain the overted json data
+            //save result to DB
+            db.swaggykuteer.insert(result, function(err, doc){
+                res.json(doc);
+                console.log(err);
+            });
+        }
+    });
+});
 app.listen(3033);

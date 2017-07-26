@@ -1,7 +1,7 @@
 /**
  * Created by susil panda on 10/13/2016.
  */
-var app = angular.module('userApp', ['ngAnimate']);
+var app = angular.module('userApp', ['ngAnimate', 'infinite-scroll']);
 var data1 = {
     name: 'default',
     skills: 'default',
@@ -70,5 +70,16 @@ app.controller('userCtrl', function($scope, $http) {// , $rootElement) {
                 //getAllImage();
             });
         }
+    }
+
+    $scope.upload = function(value) {
+
+            $http.post("http://localhost:3033/uploadData").success(function (response) {
+                //$scope.message = response;
+                console.log("products uploaded");
+                $scope.products = response;
+                //getAllImage();
+            });
+
     }
 });
